@@ -1,0 +1,29 @@
+modules = ["python-3.11"]
+run = "1"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "python main.py"]
+
+[workflows]
+runButton = "Telegram Bot 24/7"
+
+[[workflows.workflow]]
+name = "Telegram Bot"
+author = 43960219
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python main.py"
+
+[[workflows.workflow]]
+name = "Telegram Bot 24/7"
+author = 44913558
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python main.py"
