@@ -1,0 +1,22 @@
+app = "bottg1"
+primary_region = "fra"  # Франкфурт (можно изменить на: cdg, lhr, ord и др.)
+
+[build]
+  builder = "dockerfile"
+  dockerfile = "Dockerfile"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+
+[env]
+  PYTHONUNBUFFERED = "1"
+  PORT = "8080"
+
+# Опционально (если используете вебхуки):
+# [http_service.concurrency]
+#   type = "requests"
+#   hard_limit = 25
+#   soft_limit = 20
