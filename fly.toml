@@ -1,0 +1,21 @@
+app = "bottg1"  # Название приложения (должно совпадать с созданным в fly.io)
+
+[build]
+  image = "python:3.11-slim"  # Используем более новую версию Python
+  builder = "paketobuildpacks/builder:base"  # Оптимальный билдер для Python
+
+[env]
+  PYTHONUNBUFFERED = "1"  # Для корректного вывода логов
+  PYTHONFAULTHANDLER = "1"  # Для детализации ошибок
+
+# Секреты НЕ храним здесь! Используйте:
+# flyctl secrets set TELEGRAM_TOKEN=your_token
+
+[http_service]
+  internal_port = 8080  # Должен совпадать с портом в коде
+  force_https = true  # Обязательно для Telegram Webhooks
+  auto_stop_machines = false  # Предотвращаем автоматическую остановку
+
+[deploy]
+  strategy = "rolling"  # Без простоев при обновлении
+  release_command = "python -m pip install -r requirements.txt"  # Предварительная установка зависимостей
