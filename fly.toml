@@ -1,0 +1,11 @@
+app = "bottg1"  # ваше название приложения
+
+[build]
+  image = "python:3.9-slim"  # или другой актуальный тег Python
+
+[env]
+  TOKEN = "8141115973:AAF8q3jQHDAzN2y-siISPTCtr9-EM3wEYgU"  # лучше через `flyctl secrets set TOKEN=ваш_токен`
+
+[http_service]
+  internal_port = 8080
+  force_https = true
