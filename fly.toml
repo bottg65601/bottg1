@@ -1,0 +1,25 @@
+app = "bottg1"  # Название приложения (должно совпадать с Fly.io)
+
+[build]
+  image = "python:3.9-slim"  # Используем стабильную версию Python
+
+[env]
+  PYTHONUNBUFFERED = "1"     # Для реального времени вывода логов
+  PYTHONFAULTHANDLER = "1"   # Детальный вывод ошибок
+  PYTHONPATH = "/app"        # Добавляем /app в PYTHONPATH
+
+[http_service]
+  internal_port = 8080       # Порт, который слушает бот (должен совпадать с кодом)
+  force_https = true         # Обязательно для Telegram Webhook
+  auto_stop_machines = false # Лучше false для бота (чтобы не останавливался при бездействии)
+
+  [[http_service.ports]]
+    handlers = ["http"]
+    port = 80
+  [[http_service.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+[deploy]
+  strategy = "rolling"       # Плавное обновление
+  max_unavailable = 0        # Гарантирует доступность при деплое
