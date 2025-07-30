@@ -1,0 +1,20 @@
+app = "bottg1"
+primary_region = "iad"  # Или другой регион (fra, ams)
+
+[build]
+  image = "python:3.11-slim"
+  builder = "paketobuildpacks/builder:base"
+
+[env]
+  PYTHONUNBUFFERED = "1"
+  PYTHONFAULTHANDLER = "1"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+
+[machine]
+  cpus = 1
+  memory = "512mb"
+  guest = { cpus = 1, memory_mb = 512 }
