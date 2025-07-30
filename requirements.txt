@@ -1,4 +1,0 @@
-python-telegram-bot==20.5  # Последняя стабильная версия
-uvloop==0.17.0             # Ускоряет asyncio (совместим с Fly.io)
-python-dotenv==1.0.0       # Для переменных окружения
-psycopg2-binary==2.9.6     # Если используете PostgreSQL (Fly Postgres)
