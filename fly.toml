@@ -1,0 +1,18 @@
+app = "bottg1"
+primary_region = "ams"  # Или другой регион (iad, fra)
+
+[build]
+  image = "python:3.11-slim"
+
+[env]
+  PYTHONUNBUFFERED = "1"
+  PYTHONFAULTHANDLER = "1"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+
+[machine]
+  cpus = 1
+  memory = "512mb"
