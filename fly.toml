@@ -1,0 +1,26 @@
+app = "bottg1"  # Название приложения (должно совпадать с Fly.io)
+primary_region = "iad"  # Или ваш регион
+
+[build]
+  image = "python:3.11-slim"  # Более легкий образ
+
+[env]
+  PYTHONUNBUFFERED = "1"
+  PYTHONFAULTHANDLER = "1"
+  UVLOOP_DEBUG = "0"  # Отключаем debug для uvloop
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false  # Важно для бота!
+
+  [[http_service.ports]]
+    handlers = ["http"]
+    port = 80
+  [[http_service.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+[deploy]
+  strategy = "rolling"
+  max_unavailable = 0
