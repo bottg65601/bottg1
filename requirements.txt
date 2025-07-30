@@ -1,4 +1,0 @@
-python-telegram-bot==13.7  # Стабильная версия для polling-бота
-flask==2.0.1              # Совместимая версия с PTB 13.x
-gunicorn==20.1.0          # Для веб-сервера (если используете webhook)
-python-dotenv==1.0.0      # Для работы с .env файлами
