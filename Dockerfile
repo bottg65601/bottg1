@@ -2,12 +2,15 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Сначала копируем зависимости для кэширования
+# Установка системных зависимостей
+RUN apt-get update && apt-get install -y \
+    gcc \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Затем копируем остальные файлы
 COPY . .
 
-# Запуск с логированием
-CMD ["python", "-u", "main.py"]
+CMD ["python", "-u", "main.py"]  # -u для unbuffered output
