@@ -1,0 +1,15 @@
+app = "bottg1"  # Замените на имя вашего бота
+primary_region = "fra"  # Выберите регион: fra, lax, syd и т.д.
+
+[build]
+  builder = "heroku/buildpacks:20"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+[env]
+  PYTHONUNBUFFERED = "1"
