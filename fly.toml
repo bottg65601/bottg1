@@ -1,0 +1,13 @@
+app = "bottg1"
+primary_region = "fra"  # Или ваш регион
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+
+# Добавьте эту секцию для ограничения количества экземпляров
+[processes]
+  app = "main.py"
+  [processes.app.concurrency]
+    hard_limit = 1
+    soft_limit = 1
