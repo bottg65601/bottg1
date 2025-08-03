@@ -1,0 +1,6 @@
+app = "bottg1"  # Замените на имя вашего приложения
+primary_region = "fra"  # Или другой регион: lax, syd, etc
+
+[http_service]
+  internal_port = 8080
+  force_https = true
