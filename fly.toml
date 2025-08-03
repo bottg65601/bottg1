@@ -2,7 +2,7 @@ app = "bottg1"  # Замените на имя вашего бота
 primary_region = "fra"  # Выберите регион: fra, lax, syd и т.д.
 
 [build]
-  builder = "heroku/buildpacks:20"
+  builder = "heroku/buildpacks:22"
 
 [http_service]
   internal_port = 8080
